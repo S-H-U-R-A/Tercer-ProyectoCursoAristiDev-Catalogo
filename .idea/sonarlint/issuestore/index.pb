@@ -39,3 +39,11 @@ Iapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/Dialog.kt,0\9\
 Papp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/theme/Type.kt,9\9\99bf6328e3a615d2e0e8e9281ad4a66dbb79e68f
 Å
 Qapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/theme/Theme.kt,7\9\79ac997d238f4e23f0af0fa1394fed13e5ff1e00
+
+Oapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/RecyclerView.kt,a\e\ae73ad8e3f46320b50c72087bb57a05ceb5e2527
+Ç
+Rapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/model/SuperHero.kt,9\d\9d393058ae4e2688cc7898f12f78277278199333
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e

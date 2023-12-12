@@ -253,7 +253,7 @@ class MainActivity : ComponentActivity() {
                             onCancelButtonClicked = { stateDialog = false }
                         )*/
 
-                        var stateDialog: Boolean by  remember {
+                        /*var stateDialog: Boolean by  remember {
                             mutableStateOf(false)
                         }
 
@@ -261,7 +261,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 stateDialog = it
                             }
-                        )
+                        )*/
 
                         /*MyCustomDialogExample(
                             stateDialog = stateDialog,
@@ -270,12 +270,14 @@ class MainActivity : ComponentActivity() {
                             }
                         )*/
 
-                        MyConfirmationDialogExample(
+                        /*MyConfirmationDialogExample(
                             stateDialog = stateDialog,
                             onDismiss = {
                                 stateDialog = false
                             }
-                        )
+                        )*/
+
+                        SuperHeroStickyView()
 
                     }
                 }
@@ -293,7 +295,7 @@ fun DefaultPreview() {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            //MySimpleCustomDialog()
+            SuperHeroView()
         }
     }
 }
