@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -44,6 +45,7 @@ fun JetPackComposeCatalogoElementosUiTheme(
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
+
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -53,12 +55,20 @@ fun JetPackComposeCatalogoElementosUiTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
+
+    val view = LocalView.current // OBTENEMOS LA VISTA DEL COMPOSABLE ACTUAL, EN ESTE CASO EL COMPOSABLE DE TEMA
+
+    val contexto = LocalContext.current
+
+    if (!view.isInEditMode) { //VALIDAMOS SI NO ESTA EN MODO EDICIÓN
         SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+
+            val window = (view.context as Activity).window //OBTENEMOS LA VENTANA DONDE SE MUESTRA LA ACTIVIDAD
+
+            //window.statusBarColor = Color.Transparent.toArgb()//SI ESTAMOS USANDO EDGE TO EDGE CAMBIAMOS EL COLOR DESDE ESA FUNCIÓN
+
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme //COLOR DE LOS ICONOS DE LA BARRA DE ESTADO DEPENDIENDO DEL MODO
+
         }
     }
 

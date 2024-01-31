@@ -26,10 +26,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,6 +44,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposecatalogoelementosui.model.SuperHero
 import com.example.jetpackcomposecatalogoelementosui.ui.theme.JetPackComposeCatalogoElementosUiTheme
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,9 +88,9 @@ fun SuperHeroGridView(
         modifier = modifier
             .fillMaxSize()
     ) {
-        items(getSuperHeroes()){superHeroe: SuperHero ->
+        items(items = getSuperHeroes()) { superHero: SuperHero ->
             ItemHero(
-                superHero = superHeroe,
+                superHero = superHero,
                 onItemSelected = {
                     Toast.makeText(context, it.superHeroName, Toast.LENGTH_SHORT).show()
                 },
@@ -93,7 +99,6 @@ fun SuperHeroGridView(
         }
     }
 }
-
 
 
 @Composable
@@ -121,18 +126,30 @@ fun SuperHeroView(
     }
 }
 
+
 @Composable
 fun SuperHeroWithSpecialControlsView(
     modifier: Modifier = Modifier,
 ) {
     val context: Context = LocalContext.current
 
-    val rvState: LazyListState = rememberLazyListState() //Esta variable nos permite recuperar los estados posibles de la lista y poder hacer operaciones con ellos
+    val rvState: LazyListState =
+        rememberLazyListState() //Esta variable nos permite recuperar los estados posibles de la lista y poder hacer operaciones con ellos
 
     val stateElement by remember {
         derivedStateOf {
-            rvState.firstVisibleItemIndex > 0
+            rvState.firstVisibleItemIndex > 0 //Este estado derivado trabaja a partir de algun dato del estado de la lista
         }
+    }
+
+    LaunchedEffect(rvState){
+        snapshotFlow { rvState.firstVisibleItemIndex }//ACÁ INDICAMOS QUÉ A PARTIR DEL ESTADO CREAMOS UN FLUJO
+            .map {index -> index > 0}//SI EL INDICE ES MAYOR A 0 PONE TRUE SI ES MENOR PONE FALSE
+            .distinctUntilChanged()
+            .filter { it == true }//DEJAMOS LOS ELELEMENTOS QUE SEA
+            .collect{
+                //ENVIAR UNA ANÁLITICA
+            }
     }
 
     val coroutineScope = rememberCoroutineScope()
@@ -147,7 +164,7 @@ fun SuperHeroWithSpecialControlsView(
                 .fillMaxSize()
                 .weight(1f)
         ) {
-            items(getSuperHeroes()) { superhero: SuperHero ->
+            items(items = getSuperHeroes()) { superhero: SuperHero ->
                 ItemHero(
                     superHero = superhero,
                     onItemSelected = {
@@ -158,7 +175,7 @@ fun SuperHeroWithSpecialControlsView(
             }
         }
 
-        if(stateElement){
+        if (stateElement) {
             Button(
                 onClick = {
                     coroutineScope.launch() {
@@ -169,23 +186,19 @@ fun SuperHeroWithSpecialControlsView(
                 Text(text = "Soy un botón cool")
             }
         }
-        
-
     }
-
-
 }
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SuperHeroStickyView( //Ejemplo de como poner una cabecera que se quede fija a ciertos elementos agrupados
+fun SuperHeroStickyView(
+    //Ejemplo de como poner una cabecera que se quede fija a ciertos elementos agrupados
     modifier: Modifier = Modifier,
-){
+) {
     val context: Context = LocalContext.current
 
-    val superHeros: Map<String, List<SuperHero> > =
-        getSuperHeroes().groupBy { it.publisher }
+    val superHero: Map<String, List<SuperHero>> = getSuperHeroes().groupBy { it.publisher }
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -193,7 +206,7 @@ fun SuperHeroStickyView( //Ejemplo de como poner una cabecera que se quede fija 
             .fillMaxSize()
     ) {
 
-        superHeros.forEach { ( key: String, value: List<SuperHero> ): Map.Entry<String, List<SuperHero>> -> //Acá lo que se hizo fue una desestructuración de los valores de mapa
+        superHero.forEach { (key: String, value: List<SuperHero>): Map.Entry<String, List<SuperHero>> -> //Acá lo que se hizo fue una desestructuración de los valores de mapa
 
             stickyHeader {
                 Text(
@@ -219,6 +232,7 @@ fun SuperHeroStickyView( //Ejemplo de como poner una cabecera que se quede fija 
         }
     }
 }
+
 
 @Composable
 fun ItemHero(
@@ -266,51 +280,51 @@ fun ItemHero(
     }
 }
 
+
 fun getSuperHeroes(): List<SuperHero> {
     return listOf(
-        SuperHero(
-            superHeroName = "Spiderman",
-            realName = "Peter Parker",
-            publisher = "Marvel",
-            R.drawable.spiderman
-        ),
-        SuperHero(
-            superHeroName = "Wolverine",
-            realName = "James Howlett",
-            publisher = "Marvel",
-            R.drawable.logan
-        ),
-        SuperHero(
-            superHeroName = "Batman",
-            realName = "Bruce Wayne",
-            publisher = "DC",
-            R.drawable.batman
-        ),
-        SuperHero(
-            superHeroName = "Thor",
-            realName = "Thor Odinson",
-            publisher = "Marvel",
-            R.drawable.thor
-        ),
-        SuperHero(
-            superHeroName = "Flash",
-            realName = "Barry Allen",
-            publisher = "DC",
-            R.drawable.flash
-        ),
-        SuperHero(
-            superHeroName = "Green Lantern",
-            realName = "Alan Scott",
-            publisher = "DC",
-            R.drawable.green_lantern
-        ),
-        SuperHero(
-            superHeroName = "Wonder Woman",
-            realName = "Princess Diana",
-            publisher = "DC",
-            R.drawable.wonder_woman
-        ),
-
+            SuperHero(
+                superHeroName = "Spiderman",
+                realName = "Peter Parker",
+                publisher = "Marvel",
+                R.drawable.spiderman
+            ),
+            SuperHero(
+                superHeroName = "Wolverine",
+                realName = "James Howlett",
+                publisher = "Marvel",
+                R.drawable.logan
+            ),
+            SuperHero(
+                superHeroName = "Batman",
+                realName = "Bruce Wayne",
+                publisher = "DC",
+                R.drawable.batman
+            ),
+            SuperHero(
+                superHeroName = "Thor",
+                realName = "Thor Odinson",
+                publisher = "Marvel",
+                R.drawable.thor
+            ),
+            SuperHero(
+                superHeroName = "Flash",
+                realName = "Barry Allen",
+                publisher = "DC",
+                R.drawable.flash
+            ),
+            SuperHero(
+                superHeroName = "Green Lantern",
+                realName = "Alan Scott",
+                publisher = "DC",
+                R.drawable.green_lantern
+            ),
+            SuperHero(
+                superHeroName = "Wonder Woman",
+                realName = "Princess Diana",
+                publisher = "DC",
+                R.drawable.wonder_woman
+            ),
         )
 }
 
@@ -322,6 +336,6 @@ fun getSuperHeroes(): List<SuperHero> {
 @Composable
 fun MySimpleRecyclerViewExamplePreview() {
     JetPackComposeCatalogoElementosUiTheme {
-        SuperHeroStickyView()
+        SuperHeroWithSpecialControlsView()
     }
 }
