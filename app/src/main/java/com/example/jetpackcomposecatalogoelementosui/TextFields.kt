@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposecatalogoelementosui.composition_local.LocalSpacing
+import com.example.jetpackcomposecatalogoelementosui.ui.theme.JetPackComposeCatalogoElementosUiTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,6 +69,9 @@ fun MyTextFieldOutlined() {
                 Text(
                     text = "Introduce tu nombre" //Texto que aparece cuando no hay nada escrito
                 )
+            },
+            leadingIcon = {
+
             },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.Red, //Color del texto
@@ -202,7 +206,6 @@ fun MiEjemploPerro() {
                 }
             )
         )
-
 /*        TextField(
             value = campo,
             onValueChange = {
@@ -265,10 +268,12 @@ fun MyTexFieldExample(
 
 @Preview(
     showSystemUi = true,
-    uiMode = Configuration.UI_MODE_NIGHT_NO
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    apiLevel = 33
 )
 @Composable
-fun myExamplePreview() {
-    MyTexFieldExample()
-
+fun MyExamplePreview() {
+    JetPackComposeCatalogoElementosUiTheme {
+        MyTexFieldExample()
+    }
 }

@@ -20,6 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcomposecatalogoelementosui.navigation.Screen1
+import com.example.jetpackcomposecatalogoelementosui.navigation.Screen2
+import com.example.jetpackcomposecatalogoelementosui.navigation.Screen3
 import com.example.jetpackcomposecatalogoelementosui.ui.theme.JetPackComposeCatalogoElementosUiTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,19 +45,56 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
-
-
-
             JetPackComposeCatalogoElementosUiTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier,
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val navHostController: NavHostController = rememberNavController()
 
-                    MyFirstExampleAdaptive()
+                    NavHost(
+                        navController = navHostController,
+                        startDestination = "pantalla1"
+                    ){
+                        composable(
+                            route = "pantalla1"
+                        ){
+                            Screen1()
+                        }
+                        composable(
+                            route = "pantalla2"
+                        ){
+                            Screen2()
+                        }
+                        composable(
+                            route = "pantalla2"
+                        ){
+                            Screen3()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
+@Preview(
+    showBackground = true
+)
+@Composable
+fun DefaultPreview() {
+    JetPackComposeCatalogoElementosUiTheme {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            SuperHeroView()
+        }
+    }
+}
+
+
+//EJEMPLOS QUE DEBEN SER UBICADOS EN EL SET CONTENT DEL MAINACTIVITY
 /*                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -231,32 +275,6 @@ class MainActivity : ComponentActivity() {
                         SuperHeroStickyView()
 
                     }*/
-                }
-            }
-        }
-    }
-}
-
-@Preview(
-    showBackground = true
-)
-@Composable
-fun DefaultPreview() {
-    JetPackComposeCatalogoElementosUiTheme {
-        Column(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            SuperHeroView()
-        }
-    }
-}
-
-
-
-
-
-
-
 
 
 
