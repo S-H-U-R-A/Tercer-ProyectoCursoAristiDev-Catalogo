@@ -3,7 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+//MÉTODO DE EXTENSIÓN AGREGADO A TRAVEZ DEL PLUGIN  id("com.android.application")
 android {
+
     namespace = "com.example.jetpackcomposecatalogoelementosui"
     compileSdk = 34
 
@@ -27,6 +29,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug"){
+            isMinifyEnabled = true
         }
     }
 
@@ -55,6 +60,18 @@ android {
         }
     }
 
+    //FLAVORS
+
+    flavorDimensions.add("version")
+
+    productFlavors{
+        create("free"){
+            dimension = "version"
+            applicationIdSuffix = ".free"
+            buildConfigField(type = "Boolean", name= "SHOW_POPUP", value= "true" )
+        }
+    }
+
 }
 
 dependencies {
@@ -72,7 +89,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.8.2")
 
     //COMPOSE
-    implementation(platform("androidx.compose:compose-bom:2024.02.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.02.01"))
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -92,7 +109,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     //NAVIGATION COMPOSE
-    implementation(dependencyNotation = "androidx.navigation:navigation-compose:2.7.7")
+    implementation(dependencyNotation= "androidx.navigation:navigation-compose:2.7.7")
 
     //TEST UNIT
     testImplementation("junit:junit:4.13.2")
@@ -108,5 +125,8 @@ dependencies {
     //BUILD TYPE DEBUG
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //FLAVOR FREE
+    "freeImplementation"("androidx.compose.ui:ui-tooling")
 
 }
