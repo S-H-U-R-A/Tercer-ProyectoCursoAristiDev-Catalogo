@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JetPackComposeCatalogoElementosUi</string>
+    <string name="flavor">Default</string>
 </resources>
