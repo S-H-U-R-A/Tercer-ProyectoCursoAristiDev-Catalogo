@@ -8,16 +8,10 @@
       <SelectionState runConfigName="MyInteractionSourceExamplesPreview - Mode Light">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EjemploDeDibujoDeFigurasBasicas">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="MisEjemplosDeTransformacionesPreview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="MisEjemplosDeDibujarImagenesTextosRutasPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MisEjemplosDeModificadoresParaHacerDibujosPreview">
+      <SelectionState runConfigName="MyLaunchedEffectExamples">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Surface
@@ -29,10 +30,10 @@ import com.example.jetpackcomposecatalogoelementosui.ui.theme.JetPackComposeCata
 
 data class LocalComposition(
     val name: String,
-    val description: String
+    val description: String,
 )
 
-object ListDeLocalComposition{
+object ListDeLocalComposition {
     val objectsLocalComposition: List<LocalComposition> = listOf(
         LocalComposition(
             name = "LocalContext.current",
@@ -136,10 +137,12 @@ object ListDeLocalComposition{
 
 @Composable
 fun MyDocumentationOFCommonLocalComposition(
-    modifier: Modifier = Modifier
-){
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp)
     ) {
         Text(
             text = "CompositionLocal Examples",
@@ -152,16 +155,15 @@ fun MyDocumentationOFCommonLocalComposition(
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
+            items(items = ListDeLocalComposition.objectsLocalComposition) {
 
-            items(items = ListDeLocalComposition.objectsLocalComposition){
-
-                val pinnedHandle: PinnableContainer.PinnedHandle? = if(it.name == "LocalDensity.current") LocalPinnableContainer.current?.pin() else null
+                val pinnedHandle: PinnableContainer.PinnedHandle? =
+                    if (it.name == "LocalDensity.current") LocalPinnableContainer.current?.pin() else null
 
                 MyOwnItemList(item = it)
 
                 pinnedHandle?.release()
             }
-
         }
     }
 }
@@ -170,8 +172,8 @@ fun MyDocumentationOFCommonLocalComposition(
 fun MyOwnItemList(
     item: LocalComposition,
     modifier: Modifier = Modifier,
-    interactionSource: InteractionSource = remember { MutableInteractionSource() }
-){
+    interactionSource: InteractionSource = remember { MutableInteractionSource() },
+) {
     Column(
         modifier = Modifier.background(color = Color.LightGray)
     ) {
@@ -191,7 +193,7 @@ fun MyOwnItemList(
     uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
-fun MyDocumentationOFCommonLocalCompositionPreview(){
+fun MyDocumentationOFCommonLocalCompositionPreview() {
     JetPackComposeCatalogoElementosUiTheme {
         Surface(
             modifier = Modifier.fillMaxSize()

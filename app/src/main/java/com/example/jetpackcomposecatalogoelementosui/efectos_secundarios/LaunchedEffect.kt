@@ -33,11 +33,12 @@ fun MyLaunchedEffectExampleBasic(
 ){
     val context: Context = LocalContext.current//CONTEXTO
 
-    var stateTextF: String by remember { mutableStateOf("") }//ESTADO PARA EL TEXTFIELD
+    var stateTextF: String by remember { mutableStateOf(value = "") }//ESTADO PARA EL TEXTFIELD
+
     //ESTO SOLO SE EJECUTARÁ UNA VEZ YA QUE EL VALOR TRUE ES CONSTANTE Y NO SE PODRÁ CAMBIAR, SI EL VALOR CAMBIARÁ POR EJEMPLO USANDO UN ESTADO
     //ENTONCES POR CADA CAMBIO SE DISPARARRÍA ESTE TRIGGUER
     LaunchedEffect(key1 = true){//
-        Toast.makeText(context, "Recomposición", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Recomposición", Toast.LENGTH_LONG).show()
     }
 
     Column(

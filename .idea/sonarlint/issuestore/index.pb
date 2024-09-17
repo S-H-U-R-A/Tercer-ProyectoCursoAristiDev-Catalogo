@@ -118,8 +118,6 @@ Xapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/MedidasIntri
 Vapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/AdaptativeDesign.kt,0/4/044b04f54d3b3f09c61f7045fa9e003008e88524
 Å
 Qapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/WindowInset.kt,0/7/07fc2468dc6e6dc72496c6655211306e3e35f841
-Ö
-Uapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/Canvas.kt,3/b/3bc7c08c54190c8862d438ea71a24fdb4a12debe
 ö
 japp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/barra_superior_inferior/BottomAppBar.kt,8/b/8ba03856df83cd87b3ab15494213ec7d23e575f3
 ó
@@ -136,10 +134,6 @@ wapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/formularios/
 ]app/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/imagenes_e_iconos/Image.kt,7/6/764bf344734f7c8cef3e55f3231148d32ba3a2d5
 å
 \app/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/imagenes_e_iconos/Icon.kt,1/4/14da6471a7138849f510cee6facc076f5abcabc7
-å
-\app/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/BrushExamples.kt,e/7/e771e529d16a362dc1e0ce7019e22a3bf62b415e
-ò
-happ/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/DibujarImagen_Texto_Rutas.kt,c/6/c63224899fb25c3fba284a083c86b5c6368355e4
 ó
 gapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/ModificadoresParaDibujar.kt,0/f/0fbe98527ae35c46e82af9e4706f1134e0e44d2e
 •
@@ -154,15 +148,7 @@ iapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/Can
 capp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/DibujarRutas_Caminos.kt,f/f/ffa9934197fd280b2a19f7203ad910b9a09290cb
 ã
 [app/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/DibujarTexto.kt,d/1/d1b5e9d1566e12316076a48dc4e6d1e7046a2e69
-ô
-iapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushExamples.kt,b/c/bc3c0e533f2ed6cdf8ad139481365d35d1ebf4e2
-ù
-mapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushPincelBasico.kt,6/0/600fe44a9b19e54f4fcb4376edd5383c2994ed09
 ß
 wapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushPincelBasicoConColores.kt,7/3/731b194d82b8fdbd4e58b6f9aeb4b6611eafb5d7
-Ø
-app/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushPincelPersonalizadoConImagenes.kt,1/a/1aeedae1b5916decfc4dc0b745deda69a2ec6aba
-ø
-éapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushPincelPersonalizadoConShaderBrushParaImagenes.kt,e/7/e73921470ca6cd3f82cf847f25564faf2e03e49c
 ≥
 Çapp/src/main/java/com/example/jetpackcomposecatalogoelementosui/ui/graficos/pincel_brush/BrushPincelPersonalizadoConShaderBrush.kt,b/d/bd669355498fc3ec1bf8146d01e474c04f831032

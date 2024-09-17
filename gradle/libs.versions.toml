@@ -1,0 +1,50 @@
+[versions]
+agp = "8.6.0" #PLUGIN DE ANDROID PARA GRADLE.
+kotlin = "2.0.20" #VERSION DE KOTLIN.
+desugarJdkLibs = "2.1.2" #SIRVE PARA COMPATIBILIDAD CON ALGUNAS API DE JAVA 8.
+coreKtx = "1.13.1" #HACE EL CÓDIGO ANDROID ESCRITO CON KOTLIN, MÁS CONCISO Y LEGIBLE.
+lifecycleRuntimeKtx = "2.8.5" #MANEJA LOS CICLOS DE VIDA DE ANDROID CON KOTLIN DE FORMA SENCILLA.
+activityCompose = "1.9.2" #PERMITE INTEGRAR COMPOSE EN ACTIVIDADES ANDROID.
+animationGraphicsAndroid = "1.7.1" #AÑADE GRÁFICOS ANIMADOS EN JETPACK COMPOSE.
+composeBom = "2024.09.01" #ORQUESTA ALGUNAS DEPENDENCIAS PARA COMPOSE DE TAL FORMA QUE NO DE ERRORES DE INCOMPATIBILIDAD DE VERSIONES.
+material3WindowSizeClass = "1.3.0" #MANEJO DE TAMAÑOS DE VENTANA ADAPTATIVOS EN MATERIAL DESIGN.
+constraintLayoutCompose = "1.0.1" #USAR CONSTRAINTLAYOUT DENTRO DE COMPOSE
+navigationCompose = "2.8.0" #NAVEGACIÓN DECLARATIVA CON JETPACK COMPOSE.
+lottie = "6.4.0" #SOPORTE PARA ANIMACIONES JSON EN LOTTIE.
+junit = "4.13.2" #LIBRERÍA PARA PRUEBAS UNITARIAS EN JAVA.
+junitVersion = "1.2.1" #EXTIENDE JUNIT CON MÁS FUNCIONES PARA, INTEGRAR PRUEBAS UNITARIAS INSTRUMENTADAS(PRUEBAS EN DISPOSITIVO REAL O EMULADOR) EN ANDROID USANDO JUNIT 4.
+espressoCore = "3.6.1" #LIBRERÍA PARA PRUEBAS DE INTERFAZ GRÁFICA ANDROID.
+
+[libraries]
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref="desugarJdkLibs"}
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose"}
+androidx-animation-graphics = { group = "androidx.compose.animation", name = "animation-graphics-android", version.ref = "animationGraphicsAndroid" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom"}
+androidx-ui = { group = "androidx.compose.ui", name = "ui"}
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics"}
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3"}
+androidx-material-icon-extended = { group = "androidx.compose.material", name = "material-icons-extended"}
+androidx-material3-window-size = { group = "androidx.compose.material3", name="material3-window-size-class", version.ref = "material3WindowSizeClass"}
+androidx-constraintlayout-compose = { group = "androidx.constraintlayout",  name = "constraintlayout-compose", version.ref = "constraintLayoutCompose"}
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose"}
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
+
+##TEST
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion"}
+androidx-espresso-core = { group = "androidx.test.espresso", name="espresso-core", version.ref = "espressoCore"}
+
+##TEST COMPOSE
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4"} #HERRAMIENTAS DE PRUEBA PARA JETPACK COMPOSE. SE MANEJA GRACIAS A COMPOSE BOM.
+
+#DEBUG
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" } #HERRAMIENTAS PARA DEPURAR Y PROBAR INTERFACES EN COMPOSE. SE MANEJA GRACIAS A COMPOSE BOM.
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" } #CONFIGURA EL MANIFIESTO PARA PRUEBAS DE UI. SE MANEJA GRACIAS A COMPOSE BOM.
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

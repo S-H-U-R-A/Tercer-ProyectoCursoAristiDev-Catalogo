@@ -24,7 +24,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposecatalogoelementosui.ui.theme.JetPackComposeCatalogoElementosUiTheme
 
-
 //ESTE CONCEPTO CONSISTE EN OBTENER LAS MEDIDAS DEL LOS COMPOSABLES HIJOS DE UN COMPOSABLE PADRE
 //ESTAS MEDIDAS DE LOS COMPOSABLES HIJOS SE OBTIENEN ANTES DE ASIGNARLE AL PADRE UN TAMAÑO ES DECIR EN LA FASE
 @Composable
@@ -66,7 +65,6 @@ fun MyIntrinsicExample(
 
     }
 }
-
 
 @Preview(
     showSystemUi = true,

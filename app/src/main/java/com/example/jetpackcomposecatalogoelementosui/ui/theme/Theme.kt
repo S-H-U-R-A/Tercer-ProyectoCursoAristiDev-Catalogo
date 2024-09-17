@@ -49,16 +49,15 @@ fun JetPackComposeCatalogoElementosUiTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
 
-    val view = LocalView.current // OBTENEMOS LA VISTA DEL COMPOSABLE ACTUAL, EN ESTE CASO EL COMPOSABLE DE TEMA
+    val view = LocalView.current//OBTENEMOS LA VISTA DEL COMPOSABLE ACTUAL, EN ESTE CASO EL COMPOSABLE DE TEMA
 
     val contexto = LocalContext.current
 
-    if (!view.isInEditMode) { //VALIDAMOS SI NO ESTA EN MODO EDICIÓN Y SE ESTA USANDO EN UN DISPOSITIVO REAL
+    if (!view.isInEditMode) {//VALIDAMOS SI NO ESTA EN MODO EDICIÓN Y SE ESTA USANDO EN UN DISPOSITIVO REAL
         SideEffect {
 
             val window = (view.context as Activity).window //OBTENEMOS LA VENTANA DONDE SE MUESTRA LA ACTIVIDAD

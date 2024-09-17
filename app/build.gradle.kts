@@ -1,23 +1,23 @@
 plugins {
-    this.id("com.android.application") // AGP ANDROID GRADLE PLUGIN
-    this.id("org.jetbrains.kotlin.android")
+    this.alias(notation = libs.plugins.android.application) //AGP ANDROID GRADLE PLUGIN
+    this.alias(notation = libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin{
     jvmToolchain(17)
 }
 
-
 //MÉTODO DE EXTENSIÓN AGREGADO A TRAVEZ DEL PLUGIN  id("com.android.application")
 android {
 
     this.namespace = "com.example.jetpackcomposecatalogoelementosui"
-    this.compileSdk = 34
+    this.compileSdk = 35
 
     this.defaultConfig {
         applicationId = "com.example.jetpackcomposecatalogoelementosui"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -115,59 +115,45 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.compose.animation:animation-graphics-android:1.6.7")
     //COMPATIBILIDAD CON ALGUNAS API DE JAVA 8
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
-
+    coreLibraryDesugaring(dependencyNotation = libs.desugar.jdk.libs)
     //KOTLIN
-    implementation("androidx.core:core-ktx:1.13.1")
-
+    implementation(dependencyNotation =  libs.androidx.core.ktx)
     //LIFECYCLE
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
-
+    implementation(dependencyNotation = libs.androidx.lifecycle.runtime.ktx)
     //ACTIVIDAD
-    implementation("androidx.activity:activity-compose:1.9.0")
-
+    implementation(libs.androidx.activity.compose)
+    //ANIMATION COMPOSE
+    implementation(libs.androidx.animation.graphics)
     //COMPOSE
-    implementation(platform("androidx.compose:compose-bom:2024.05.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    //MATERIAL 3 COMPOSE
-    implementation("androidx.compose.material3:material3")
-    implementation ("androidx.compose.material:material-icons-extended")
-
+    implementation(dependencyNotation = platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    //MATERIAL3 COMPOSE
+    implementation(libs.androidx.material3)
+    implementation (libs.androidx.material.icon.extended)
     //WINDOWS SIZE CLASSES
-    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
-
-    //MATERIAL 2 COMPOSE
-    //implementation ("androidx.compose.material:material:1.3.1")
-
-    //LOTTIE
-    implementation ("com.airbnb.android:lottie:6.4.0")
-
+    implementation(libs.androidx.material3.window.size)
     //CONSTRAINT LAYOUT
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-
+    implementation(dependencyNotation = libs.androidx.constraintlayout.compose)
     //NAVIGATION COMPOSE
-    implementation(dependencyNotation= "androidx.navigation:navigation-compose:2.7.7")
+    implementation(dependencyNotation= libs.androidx.navigation.compose)
+    //LOTTIE
+    implementation (dependencyNotation = libs.lottie)
 
     //TEST UNIT
-    testImplementation("junit:junit:4.13.2")
-
+    testImplementation(dependencyNotation = libs.junit)
     //TEST INSTRUMENTATION
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
     //COMPOSE TEST UI
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.05.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 
     //BUILD TYPE DEBUG
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
     //FLAVOR FREE
-    "freeImplementation"("androidx.compose.ui:ui-tooling")
+    "freeImplementation"(dependencyNotation =  libs.androidx.ui.tooling)
 }

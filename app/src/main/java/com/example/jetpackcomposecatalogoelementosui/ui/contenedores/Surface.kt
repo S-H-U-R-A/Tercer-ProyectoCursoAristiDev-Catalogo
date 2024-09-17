@@ -93,7 +93,6 @@ fun MySurfaceExampleTwoBasic(
     }
 }
 
-
 @Composable
 fun MySurfaceExampleThreeBasic(
     modifier: Modifier = Modifier,
@@ -121,7 +120,6 @@ fun MySurfaceExampleThreeBasic(
         }
     }
 }
-
 
 @Composable
 fun MySurfaceExampleFourBasic(
@@ -158,6 +156,6 @@ fun MySurfaceExampleFourBasic(
 @Composable
 fun MySurfaceExamplesPreview(){
     JetPackComposeCatalogoElementosUiTheme {
-        MySurfaceExampleOneBasic()
+        MySurfaceExampleThreeBasic()
     }
 }
